@@ -13,10 +13,8 @@ cmake_install.cmake
 Makefile
 build/
 
-# Rendered images
+# outfile
 out/
-*.ppm
-*.png
 
 # Editor & IDE configs
 .vscode/
