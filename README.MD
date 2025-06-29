@@ -1,6 +1,6 @@
 # MyRaytracer Project
 
-This project is based on the [TinyRaytracer Wiki by ssloy](https://github.com/ssloy/tinyraytracer/wiki), which I’m using as a learning reference.
+This project is inspired by ssloy's [TinyRaytracer Wiki](https://github.com/ssloy/tinyraytracer/wiki), which I studied in depth and restructured into a cleaner, more modularized version as part of my learning journey.
 
 ## Requirements
 
@@ -10,8 +10,24 @@ This project is based on the [TinyRaytracer Wiki by ssloy](https://github.com/ss
 
 ## How to Build (Linux / Windows)
 ```bash
-g++ -std=c++17 -fopenmp -O2 -o raytracer src/main.cpp
+g++ -std=c++17 -fopenmp -O2 -o myraytracer src/main.cpp
 ```
+
+## How to Use
+### Specify Maximum Recursion Depth
+```bash
+./myraytracer <depth>
+```
+### Use a JSON Scene Configuration File
+```json
+  "width": 1960,
+  "height": 1440,
+  "fov": 2,
+  "background": [0.2, 0.7, 0.8],
+  "lights": [
+  ...
+```
+- You can define custom spheres, lights, resolution, etc. via a `scene.json`file.
 
 # Project Goals
 

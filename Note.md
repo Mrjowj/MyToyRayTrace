@@ -11,7 +11,7 @@
 </figure>
 
 - using `vector<vec3> framebuffer(width * height)`to store pixios
-- For ray algorithm and corresponding material parameters
+- For ray algorithm and corresponding material parameters, watch my other note
   -> [watch here](docs/algorithm&material.pdf)
 ## sphere.c
 

@@ -16,6 +16,9 @@ build/
 # outfile
 out/
 
+# Executable binary
+myraytracer
+
 # Editor & IDE configs
 .vscode/
 .idea/
