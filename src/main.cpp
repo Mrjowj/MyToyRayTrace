@@ -10,6 +10,8 @@
 // Third-party library 
 #define STB_IMAGE_WRITE_IMPLEMENTATION 
 #include "include/stb_image_write.h"
+#define STB_IMAGE_IMPLEMENTATION
+#include "include/stb_image.h"
 #include "include/json.hpp"
 using json = nlohmann::json;
 
@@ -18,6 +20,7 @@ using json = nlohmann::json;
 #include "material.h"
 #include "sphere.h"
 #include "render.h"
+#include "background.h"
 using namespace std;
 
 int depthMax;
@@ -46,12 +49,24 @@ int main(int argc, char* argv[]) {
     int width  = config["width"];
     int height = config["height"];
     float fov  = config["fov"];
-    vec3 background = {
-        config["background"][0],
-        config["background"][1],
-        config["background"][2]
-    };
 
+    Background bg;
+    bg.color = vec3{0.2f, 0.7f, 0.8f}; // color when failed to load any background
+    if (config.contains("background")) {
+        auto b = config["background"];
+        if (b["type"] == "image" && b.contains("path")) {
+            string path = b["path"];
+            bg.image_data = stbi_load(path.c_str(), &bg.width, &bg.height, &bg.channels, 0);
+            if (!bg.image_data) {
+                cerr << "Failed to load envmap, fallback to color.\n";
+            }
+        }
+        if (b.contains("default")) {
+            auto d = b["default"];
+            bg.color = vec3{d[0], d[1], d[2]};
+        }
+    }
+    
     vector<vec3> framebuffer(width * height);
 
     vector<vec3> lights;
@@ -91,7 +106,7 @@ int main(int argc, char* argv[]) {
         vec3 dir = vec3{dir_x, dir_y, dir_z}.normalized();
 
         // Cast a ray from cam in direction 'dir' and compute its resulting color.
-        framebuffer[pix] = cast_ray(vec3{0, 0, 0}, dir, spheres, lights, background, 0);
+        framebuffer[pix] = cast_ray(vec3{0, 0, 0}, dir, spheres, lights, bg, 0);
     }
 
     auto end_time = chrono::high_resolution_clock::now(); // End timing

@@ -6,6 +6,7 @@
 
 #include "vec3.h"
 #include "sphere.h"
+#include "background.h"
 #include <cmath>
 #include <tuple>
 #include <vector>
@@ -86,13 +87,13 @@ inline vec3 cast_ray(
     const vec3& orig, const vec3& dir,
     const vector<Sphere>& spheres,
     const vector<vec3>& lights,
-    const vec3& background,
+    const Background& background,
     int depth = 0
 ) {
-    if (depth > depthMax) return {0.2f, 0.7f, 0.8f};  // Background
+    if (depth > depthMax) return background.color;
 
     auto [hit, point, N, material] = scene_intersect(orig, dir, spheres);
-    if (!hit) return {0.2f, 0.7f, 0.8f};
+    if (!hit) return background.sample(dir);
 
     // Compute and normalize reflection and refraction directions
     vec3 reflect_dir = reflect(dir, N).normalized();

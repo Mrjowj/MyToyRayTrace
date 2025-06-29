@@ -28,6 +28,7 @@ g++ -std=c++17 -fopenmp -O2 -o myraytracer src/main.cpp
   ...
 ```
 - You can define custom spheres, lights, resolution, etc. via a `scene.json`file.
+### The rendered image will in the out file
 
 # Project Goals
 
