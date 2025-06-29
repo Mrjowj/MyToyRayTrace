@@ -28,7 +28,7 @@
 ---
 ## render.c
 - How to Calculate reflection vector?
-  -> [watch here](https://zhuanlan.zhihu.com/p/555451478)
+  -> [watch here(ch)](https://zhuanlan.zhihu.com/p/555451478)
 - Calculate refraction vector using Snell's law?
   -> [watch here](https://byjus.com/physics/law-refraction-snells-law/)
 
@@ -38,9 +38,9 @@
 
 Projecting the direction vector dir onto a sphere, mapping that spherical direction to 2D coordinates (u, v), and then sampling the corresponding pixel from an environment texture.
 
-ch version -> [watch here](assets/sample函数说明)
+ch version -> [watch here](assets/sample函数说明.pdf)
 
-jp version -> [watch here](assets/sample()の説明)
+jp version -> [watch here](assets/sample()の説明.pdf)
 
 
 *Maintained by: Mrjowj*

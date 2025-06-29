@@ -1,12 +1,15 @@
 # MyRaytracer Project
 
 This project is inspired by ssloy's [TinyRaytracer Wiki](https://github.com/ssloy/tinyraytracer/wiki), which I studied in depth and restructured into a cleaner, more modularized version as part of my learning journey.
+<figure>
+  <img src="assets/sample.png" alt="sample" width="1200">
+</figure>
 
 ## Requirements
 
 - C++17-compliant compiler (e.g. `g++`, `clang++`)
-- OpenMP support (`-fopenmp`)
-- No external dependencies — all required headers (`stb_image_write.h`, `json.hpp`) are included in this repo.
+- OpenMP support (`-fopenmp`)`
+- No external dependencies — all required headers (`stb_image_write.h`, `json.hpp`) are included in this repo.`
 
 ## How to Build (Linux / Windows)
 ```bash

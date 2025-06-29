@@ -5,6 +5,7 @@
 #include <cmath>
 #include <algorithm>
 #include <filesystem>
+#include <unordered_map>
 #include <omp.h> // OpenMP parallel rendering
 
 // Third-party library 
@@ -40,6 +41,16 @@ int main(int argc, char* argv[]) {
             return 1;
         }
     }
+    unordered_map<string, Material> material_map = {
+        {"ivory",       ivory},
+        {"glass",       glass},
+        {"mirror",      mirror},
+        {"red_rubber",  red_rubber},
+        {"gold",        gold},
+        {"emerald",     emerald},
+        {"steel",       steel},
+        {"ice",         ice}
+    };
 
     // === Load configuration from JSON ===
     json config;
@@ -78,18 +89,11 @@ int main(int argc, char* argv[]) {
     for (auto& s : config["spheres"]) {
         vec3 center = {s["center"][0], s["center"][1], s["center"][2]};
         float radius = s["radius"];
-        string mname = s["material"];
+        std::string mname = s["material"];
 
-        Material m;
-        if (mname == "ivory")        m = ivory;
-        else if (mname == "glass")   m = glass;
-        else if (mname == "mirror")  m = mirror;
-        else if (mname == "red_rubber") m = red_rubber;
-        else m = ivory; // fallback
-
+        Material m = material_map.count(mname) ? material_map[mname] : mirror;
         spheres.emplace_back(center, radius, m);
     }
-
 
 /*------------------------ main(parallelized) -------------------------*/
     auto start_time = chrono::high_resolution_clock::now(); // Start timing

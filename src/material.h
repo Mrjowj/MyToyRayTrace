@@ -40,4 +40,32 @@ constexpr Material mirror = {
     1425.0f
 };
 
+constexpr Material gold = {
+    1.0f,
+    {0.5f, 0.8f, 0.3f, 0.0f},
+    {1.0f, 0.843f, 0.0f},
+    300.0f
+};
+
+constexpr Material emerald = {
+    1.3f,
+    {0.1f, 0.3f, 0.0f, 0.6f},
+    {0.314f, 0.784f, 0.471f},
+    75.0f
+};
+
+constexpr Material steel = {
+    1.0f,
+    {0.2f, 1.0f, 0.5f, 0.0f},
+    {0.6f, 0.6f, 0.7f},
+    800.0f
+};
+
+constexpr Material ice = {
+    1.31f,
+    {0.1f, 0.3f, 0.1f, 0.9f},
+    {0.9f, 0.95f, 1.0f},
+    250.0f
+};
+
 #endif // MATERIAL_H

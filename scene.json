@@ -1,8 +1,8 @@
 {
-  "width": 5000,
-  "height": 2500,
-  "fov": 1.2,
-  
+  "width": 10000,
+  "height": 5000,
+  "fov": 1,
+
   "background": {
     "type": "image",
     "path": "assets/steps.jpg",
@@ -10,16 +10,29 @@
   },
 
   "lights": [
-    [-20, 20, 20],
-    [30, 50, -25],
-    [30, 20, 30]
+    [-20, 20,  20],
+    [30,  50, -25],
+    [30,  20,  30],
+    [0,   100, 0]
   ],
 
   "spheres": [
-    { "center": [-3, 0, -16], "radius": 2, "material": "ivory" },
-    { "center": [-1.0, -1.5, -12], "radius": 2, "material": "glass" },
-    { "center": [1.5, -0.5, -18], "radius": 3, "material": "red_rubber" },
-    { "center": [7, 5, -18], "radius": 4, "material": "mirror" }
+    { "center": [-6, -1, -14], "radius": 2.5, "material": "steel" },
+    { "center": [-3.5, 1.5, -18], "radius": 1.5, "material": "mirror" },
+    { "center": [-4.5, -2.5, -12], "radius": 1.2, "material": "ivory" },
+
+    { "center": [0, -1, -16], "radius": 2.0, "material": "glass" },
+    { "center": [2.5, 0, -15], "radius": 1.5, "material": "emerald" },
+    { "center": [1, -2.2, -13], "radius": 1.0, "material": "gold" },
+
+    { "center": [6, 1.2, -18], "radius": 2.3, "material": "red_rubber" },
+    { "center": [5.5, -1.5, -13], "radius": 1.0, "material": "ice" },
+    { "center": [8, -1.2, -19], "radius": 1.5, "material": "ivory" },
+
+    { "center": [-8, 3, -25], "radius": 3.0, "material": "glass" },
+    { "center": [0, 4, -30], "radius": 4.0, "material": "mirror" },
+    { "center": [8, 5, -26], "radius": 2.5, "material": "steel" }
   ]
 }
+
 
