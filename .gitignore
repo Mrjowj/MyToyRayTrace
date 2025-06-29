@@ -1,0 +1,40 @@
+# Build artifacts
+*.o
+*.obj
+*.a
+*.so
+*.exe
+*.out
+*.dll
+*.dylib
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+build/
+
+# Rendered images
+out/
+*.ppm
+*.png
+
+# Editor & IDE configs
+.vscode/
+.idea/
+
+# Temporary files
+*.log
+*.tmp
+*.swp
+*.bak
+*~
+
+# macOS system files
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+
+

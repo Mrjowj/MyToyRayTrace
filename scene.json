@@ -1,0 +1,18 @@
+{
+  "width": 1960,
+  "height": 1440,
+  "fov": 2,
+  "background": [0.2, 0.7, 0.8],
+  "lights": [
+    [-20, 20, 20],
+    [30, 50, -25],
+    [30, 20, 30]
+  ],
+  "spheres": [
+    { "center": [-3, 0, -16], "radius": 2, "material": "ivory" },
+    { "center": [-1.0, -1.5, -12], "radius": 2, "material": "glass" },
+    { "center": [1.5, -0.5, -18], "radius": 3, "material": "red_rubber" },
+    { "center": [7, 5, -18], "radius": 4, "material": "mirror" }
+  ]
+}
+
