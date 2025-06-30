@@ -22,6 +22,8 @@ using json = nlohmann::json;
 #include "sphere.h"
 #include "render.h"
 #include "background.h"
+#include "camera.h"
+
 using namespace std;
 
 int depthMax;
@@ -60,6 +62,15 @@ int main(int argc, char* argv[]) {
     int width  = config["width"];
     int height = config["height"];
     float fov  = config["fov"];
+
+    vec3 camera_pos = {0, 0, 0};
+    vec3 look_at = {0, 0, -1};
+    if (config.contains("camera")) {
+        auto cam = config["camera"];
+        camera_pos = vec3{cam["position"][0], cam["position"][1], cam["position"][2]};
+        look_at    = vec3{cam["look_at"][0],   cam["look_at"][1],   cam["look_at"][2]};
+    }
+    Camera cam(camera_pos, look_at);
 
     Background bg;
     bg.color = vec3{0.2f, 0.7f, 0.8f}; // color when failed to load any background
@@ -105,12 +116,13 @@ int main(int argc, char* argv[]) {
 
         float dir_x =  (i + 0.5f) - width / 2.f;
         float dir_y = -(j + 0.5f) + height / 2.f;  // Flip vertically, careful
-        float dir_z = -height / (2.f * tan(fov / 2.f)); // careful the -
+        float dir_z = height / (2.f * tan(fov / 2.f));
 
-        vec3 dir = vec3{dir_x, dir_y, dir_z}.normalized();
+        //cam.pos2curpixel
+        vec3 dir = (cam.forward * dir_z + cam.right * dir_x + cam.up * dir_y).normalized();
 
         // Cast a ray from cam in direction 'dir' and compute its resulting color.
-        framebuffer[pix] = cast_ray(vec3{0, 0, 0}, dir, spheres, lights, bg, 0);
+        framebuffer[pix] = cast_ray(cam.position, dir, cam, spheres, lights, bg, 0);
     }
 
     auto end_time = chrono::high_resolution_clock::now(); // End timing

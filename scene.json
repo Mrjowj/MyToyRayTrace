@@ -1,7 +1,12 @@
 {
-  "width": 10000,
-  "height": 5000,
+  "width": 1920,
+  "height": 1080,
   "fov": 1,
+
+  "camera": {
+    "position": [0, 0, 5],
+    "look_at": [0, 0, -1]
+  },
 
   "background": {
     "type": "image",

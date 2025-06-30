@@ -10,12 +10,19 @@ struct Background {
     int width = 0, height = 0, channels = 0;
 
     // 返回背景颜色（根据ray方向计算贴图坐标）
-    vec3 sample(const vec3& dir) const {
+    vec3 sample(const vec3& dir, const vec3& right, const vec3& up, const vec3& forward) const {
         if (!image_data) return color;
 
-        vec3 d = dir.normalized();
-        float phi = atan2(d.z, d.x);
-        float theta = acos(d.y);
+        // 将世界方向 dir 投影到相机局部空间
+        vec3 d_cam = vec3{
+            dir * right,
+            dir * up,
+            dir * forward
+        }.normalized();
+
+        float phi = atan2(-d_cam.z, d_cam.x);
+        float theta = acos(d_cam.y);
+
         float u = (phi + M_PI) / (2 * M_PI);
         float v = theta / M_PI;
 

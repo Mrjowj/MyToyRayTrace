@@ -7,6 +7,7 @@
 #include "vec3.h"
 #include "sphere.h"
 #include "background.h"
+#include "camera.h"
 #include <cmath>
 #include <tuple>
 #include <vector>
@@ -85,6 +86,7 @@ inline tuple<bool, vec3, vec3, Material> scene_intersect(
 // Cast a ray from 'orig' in direction 'dir' and compute its resulting color.
 inline vec3 cast_ray(
     const vec3& orig, const vec3& dir,
+    const Camera& cam, 
     const vector<Sphere>& spheres,
     const vector<vec3>& lights,
     const Background& background,
@@ -93,7 +95,7 @@ inline vec3 cast_ray(
     if (depth > depthMax) return background.color;
 
     auto [hit, point, N, material] = scene_intersect(orig, dir, spheres);
-    if (!hit) return background.sample(dir);
+    if (!hit) return background.sample(dir, cam.right, cam.up, cam.forward);
 
     // Compute and normalize reflection and refraction directions
     vec3 reflect_dir = reflect(dir, N).normalized();
@@ -101,8 +103,8 @@ inline vec3 cast_ray(
 
     // ! important ! : Recursively trace reflected and refracted rays to get their resulting color.
     // 再帰的に追跡
-    vec3 reflect_color = cast_ray(point, reflect_dir, spheres, lights, background, depth + 1);
-    vec3 refract_color = cast_ray(point, refract_dir, spheres, lights, background, depth + 1);
+    vec3 reflect_color = cast_ray(point, reflect_dir, cam, spheres, lights, background, depth + 1);
+    vec3 refract_color = cast_ray(point, refract_dir, cam, spheres, lights, background, depth + 1);
 
 
     // Initialize diffuse and specular light intensity. Loop over each point light.

@@ -1,5 +1,13 @@
 # Study Note
 ## Foreword
+- What is RayTrace? -> If you dont know, go scearch pls.
+<figure>
+  <img src="assets/RayTracing.png" alt="https://hucoco.com/2018/07/05/Theory-of-Ray-Tracing/" width="800">
+  <figcaption><b>Figure:</b>Diagram of a single ray in ray tracing</figcaption>
+</figure>
+
+- This project uses the following coordinate system convention:
+
 | Axis     | Direction (English) | Notes              |
 |----------|---------------------|--------------------|
 | X        | Right (+)           | Horizontal axis    |
