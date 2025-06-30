@@ -10,6 +10,7 @@ This project is inspired by ssloy's [TinyRaytracer Wiki](https://github.com/sslo
   <img src="assets/sample_2.png" alt="sample" width="13632">
   <figcaption><b>Figure:</b> sample(behand)</figcaption>
 </figure>
+Try higher resolution plssss, its beautiful!
 
 ## Requirements
 
@@ -36,7 +37,12 @@ g++ -std=c++17 -fopenmp -O2 -o myraytracer src/main.cpp
   "lights": [
   ...
 ```
-- You can define custom spheres, lights, resolution, etc. via a `scene.json`file.
+- You can define custom resolution, spheres, lights, resolution, etc. via a `scene.json`file.
+- The default camera parameters facing forward are as follows:
+```json
+    "position": [0, 0, 0],
+    "look_at": [0, 0, -1],
+```
 ### The rendered images will be saved in the `out` folder located at the project root directory.
 
 # Project Goals

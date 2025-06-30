@@ -1,10 +1,10 @@
 {
-  "width": 13632,
-  "height": 6818,
+  "width": 1920,
+  "height": 1440,
   "fov": 1.05,
 
   "camera": {
-    "position": [0, 5, -45],
+    "position": [0, 0, 0],
     "look_at": [0, 0, -1],
 
 
