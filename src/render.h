@@ -95,7 +95,7 @@ inline vec3 cast_ray(
     if (depth > depthMax) return background.color;
 
     auto [hit, point, N, material] = scene_intersect(orig, dir, spheres);
-    if (!hit) return background.sample(dir, cam.right, cam.up, cam.forward);
+    if (!hit) return background.sample(dir);
 
     // Compute and normalize reflection and refraction directions
     vec3 reflect_dir = reflect(dir, N).normalized();

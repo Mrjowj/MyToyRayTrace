@@ -40,15 +40,23 @@
 - Calculate refraction vector using Snell's law?
   -> [watch here](https://byjus.com/physics/law-refraction-snells-law/)
 
+- How to calculate the intersection with the board floor?
+<figure>
+  <img src="assets/floorIntersect.png" alt="floorIntersect.png" width="400">
+  <figcaption><b>Figure:</b> calculatefloorIntersection</figcaption>
+</figure>  
+
+If `t` is greater than 0, we consider the ray to intersect the plane, and we can proceed (e.g., check whether it’s the nearest intersection, within the plane bounds, etc).
+
 ---
 ## background.c
 - Purpose of the `sample(const vec3& dir)` Function
 
 Projecting the direction vector dir onto a sphere, mapping that spherical direction to 2D coordinates (u, v), and then sampling the corresponding pixel from an environment texture.
 
-ch version -> [watch here](assets/sample函数说明.pdf)
+ch version -> [~~old~~](assets/sample函数说明.pdf)
+jp version -> [~~old~~](assets/sample()の説明.pdf)
 
-jp version -> [watch here](assets/sample()の説明.pdf)
-
+new -> [watch here](https://shi-yan.github.io/webgpuunleashed/Advanced/equirectangular_rendering.html?utm_source=chatgpt.com)
 
 *Maintained by: Mrjowj*

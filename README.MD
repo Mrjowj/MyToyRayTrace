@@ -1,8 +1,14 @@
 # MyRaytracer Project
 
 This project is inspired by ssloy's [TinyRaytracer Wiki](https://github.com/ssloy/tinyraytracer/wiki), which I studied in depth and restructured into a cleaner, more modularized version as part of my learning journey.
+
+## Project Preview
 <figure>
-  <img src="assets/sample.png" alt="sample" width="1200">
+  <img src="assets/sample_1.png" alt="sample" width="13632">
+  <figcaption><b>Figure:</b> sample(forward)</figcaption>
+  <br>
+  <img src="assets/sample_2.png" alt="sample" width="13632">
+  <figcaption><b>Figure:</b> sample(behand)</figcaption>
 </figure>
 
 ## Requirements
@@ -31,7 +37,7 @@ g++ -std=c++17 -fopenmp -O2 -o myraytracer src/main.cpp
   ...
 ```
 - You can define custom spheres, lights, resolution, etc. via a `scene.json`file.
-### The rendered image will in the out file
+### The rendered images will be saved in the `out` folder located at the project root directory.
 
 # Project Goals
 

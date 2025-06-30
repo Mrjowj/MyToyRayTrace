@@ -1,16 +1,19 @@
 {
-  "width": 1920,
-  "height": 1080,
-  "fov": 1,
+  "width": 13632,
+  "height": 6818,
+  "fov": 1.05,
 
   "camera": {
-    "position": [0, 0, 5],
-    "look_at": [0, 0, -1]
+    "position": [0, 5, -45],
+    "look_at": [0, 0, -1],
+
+
+    "behind" : [0, 5, -45]
   },
 
   "background": {
     "type": "image",
-    "path": "assets/steps.jpg",
+    "path": "assets/church.jpg",
     "default": [0.2, 0.7, 0.8]
   },
 

@@ -108,7 +108,9 @@ int main(int argc, char* argv[]) {
 
 /*------------------------ main(parallelized) -------------------------*/
     auto start_time = chrono::high_resolution_clock::now(); // Start timing
-#pragma omp parallel for
+#pragma omp parallel 
+{
+    #pragma omp for
     for (int pix = 0; pix < width * height; ++pix) {
         // 1dim 
         int i = pix % width;
@@ -124,11 +126,10 @@ int main(int argc, char* argv[]) {
         // Cast a ray from cam in direction 'dir' and compute its resulting color.
         framebuffer[pix] = cast_ray(cam.position, dir, cam, spheres, lights, bg, 0);
     }
-
+}
     auto end_time = chrono::high_resolution_clock::now(); // End timing
     auto duration = chrono::duration_cast<chrono::milliseconds>(end_time - start_time).count();
     cout << "Render time: " << duration << " ms" << endl;
-
 
 /*------------------------------- save -------------------------------*/
     filesystem::create_directories("out");
