@@ -1,12 +1,14 @@
 {
-  "width": 1920,
-  "height": 1440,
-  "fov": 1.05,
+  "width": 3840,
+  "height": 2880,
+
 
   "camera": {
     "position": [0, 0, 0],
     "look_at": [0, 0, -1],
-
+    "fov": 1.05,
+    "aperture": 0.2,
+    "focus_dist": 25.0,
 
     "behind" : [0, 5, -45]
   },

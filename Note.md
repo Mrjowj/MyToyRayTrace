@@ -59,4 +59,14 @@ jp version -> [~~old~~](assets/sample()の説明.pdf)
 
 new -> [watch here](https://shi-yan.github.io/webgpuunleashed/Advanced/equirectangular_rendering.html?utm_source=chatgpt.com)
 
+---
+## camera.c
+- How to Add Depth of Field (DOF)
+
+To simulate realistic depth-of-field effects, we perturb the ray origin randomly inside a lens aperture, and refocus the ray toward a focus plane.
+<figure>
+  <img src="assets/DOF.png" alt="DOF.png" width="400">
+  <figcaption><b>Figure:</b> DOF</figcaption>
+</figure>  
+
 *Maintained by: Mrjowj*

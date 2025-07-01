@@ -54,23 +54,30 @@ int main(int argc, char* argv[]) {
         {"ice",         ice}
     };
 
-    // === Load configuration from JSON ===
+/*------------------------ load config from scene.json -------------------------*/
     json config;
     ifstream in("scene.json");
     in >> config;
 
     int width  = config["width"];
     int height = config["height"];
-    float fov  = config["fov"];
 
+    // when failed to load cam
     vec3 camera_pos = {0, 0, 0};
     vec3 look_at = {0, 0, -1};
-    if (config.contains("camera")) {
+    float fov = 1.0;
+    float aperture = 0.0f;
+    float focus_dist = 1.0f;
+    if (config.contains("camera"))
+    {
         auto cam = config["camera"];
         camera_pos = vec3{cam["position"][0], cam["position"][1], cam["position"][2]};
         look_at    = vec3{cam["look_at"][0],   cam["look_at"][1],   cam["look_at"][2]};
+        fov        = cam["fov"];
+        aperture   = cam["aperture"];
+        focus_dist      = cam["focus_dist"];
     }
-    Camera cam(camera_pos, look_at);
+    Camera cam(camera_pos, look_at, fov, aperture, focus_dist);
 
     Background bg;
     bg.color = vec3{0.2f, 0.7f, 0.8f}; // color when failed to load any background
@@ -112,19 +119,17 @@ int main(int argc, char* argv[]) {
 {
     #pragma omp for
     for (int pix = 0; pix < width * height; ++pix) {
-        // 1dim 
-        int i = pix % width;
-        int j = pix / width;
 
-        float dir_x =  (i + 0.5f) - width / 2.f;
-        float dir_y = -(j + 0.5f) + height / 2.f;  // Flip vertically, careful
-        float dir_z = height / (2.f * tan(fov / 2.f));
+        vec3 ray_origin, ray_dir;      // pos and dir of the ray
 
-        //cam.pos2curpixel
-        vec3 dir = (cam.forward * dir_z + cam.right * dir_x + cam.up * dir_y).normalized();
-
-        // Cast a ray from cam in direction 'dir' and compute its resulting color.
-        framebuffer[pix] = cast_ray(cam.position, dir, cam, spheres, lights, bg, 0);
+        if (cam.aperture > 0.0f) {     // Check whether depth of field is needed
+            cam.get_ray_with_dof(pix, width, height, ray_origin, ray_dir);
+        } else {
+            ray_origin = cam.position;
+            ray_dir = cam.get_ray_dir(pix, width, height);
+        }        
+        // Cast a ray from ray_origin in direction ray_dir and compute its resulting color.
+        framebuffer[pix] = cast_ray(ray_origin, ray_dir, cam, spheres, lights, bg, 0);
     }
 }
     auto end_time = chrono::high_resolution_clock::now(); // End timing

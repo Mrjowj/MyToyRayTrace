@@ -4,11 +4,14 @@ This project is inspired by ssloy's [TinyRaytracer Wiki](https://github.com/sslo
 
 ## Project Preview
 <figure>
-  <img src="assets/sample_1.png" alt="sample" width="13632">
+  <img src="assets/sample_1.png" alt="sample" width="1920">
   <figcaption><b>Figure:</b> sample(forward)</figcaption>
   <br>
-  <img src="assets/sample_2.png" alt="sample" width="13632">
+  <img src="assets/sample_2.png" alt="sample" width="1920">
   <figcaption><b>Figure:</b> sample(behand)</figcaption>
+  <br>
+  <img src="assets/sample_3.png" alt="sample" width="1920">
+  <figcaption><b>Figure:</b> add depth of field</figcaption>
 </figure>
 Try higher resolution plssss, its beautiful!
 
@@ -30,18 +33,24 @@ g++ -std=c++17 -fopenmp -O2 -o myraytracer src/main.cpp
 ```
 ### Use a JSON Scene Configuration File
 ```json
-  "width": 1960,
-  "height": 1440,
-  "fov": 2,
-  "background": [0.2, 0.7, 0.8],
-  "lights": [
-  ...
+{
+  "width": 3840,
+  "height": 2880,
+  "camera": {"..."},
+  "background": {"..."},
+  "lights": ["..."],
+  "spheres": ["..."]
+}
 ```
 - You can define custom resolution, spheres, lights, resolution, etc. via a `scene.json`file.
 - The default camera parameters facing forward are as follows:
 ```json
+"camera": {
     "position": [0, 0, 0],
     "look_at": [0, 0, -1],
+    "aperture": 0, //0 means no depth of field effect
+    "focus_dist": 25.0,
+}
 ```
 ### The rendered images will be saved in the `out` folder located at the project root directory.
 
