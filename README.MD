@@ -7,12 +7,15 @@ This project is inspired by ssloy's [TinyRaytracer Wiki](https://github.com/sslo
   <img src="assets/sample_1.png" alt="sample" width="1920">
   <figcaption><b>Figure:</b> sample(forward)</figcaption>
   <br>
+  <br>
   <img src="assets/sample_2.png" alt="sample" width="1920">
   <figcaption><b>Figure:</b> sample(behand)</figcaption>
+  <br>
   <br>
   <img src="assets/sample_3.png" alt="sample" width="1920">
   <figcaption><b>Figure:</b> add depth of field</figcaption>
 </figure>
+
 Try higher resolution plssss, its beautiful!
 
 ## Requirements
